@@ -493,7 +493,8 @@ func parseRolesFromSamlResponse(assertion string) []role {
 	for _, attr := range sResponse.Assertion.AttributeStatement.Attributes {
 		if attr.Name == "https://aws.amazon.com/SAML/Attributes/Role" {
 			for _, val := range attr.AttributeValues {
-				parts := strings.Split(val.Value, ",")
+				corrected := strings.ReplaceAll(val.Value, "corporate.datacard.com\\", "")
+				parts := strings.Split(corrected.Value, ",")
 
 				if strings.Contains(parts[0], ":role/") {
 					roles = append(roles, role{
