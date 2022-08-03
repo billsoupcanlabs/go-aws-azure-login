@@ -1,4 +1,4 @@
-module github.com/luneo7/go-aws-azure-login
+module github.com/billsoupcanlabs/go-aws-azure-login
 
 go 1.17
 
